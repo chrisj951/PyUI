@@ -71,10 +71,7 @@ jobs:
           # Create new release with commit log
           gh release create "$TAG_NAME" "$FILE_NAME" \
             --title "Nightly Build $TAG_NAME" \
-            --notes "Automated nightly build from commit ${{ steps.get_sha.outputs.short_sha }}.
-
-Changes since last release:
-$COMMIT_LOG" \
+            --notes "Automated nightly build from commit ${{ steps.get_sha.outputs.short_sha }}.\n\nChanges since last release:\n$COMMIT_LOG"
             --prerelease
 
       - name: Prune old nightly builds (keep latest 10)
