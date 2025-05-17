@@ -1,0 +1,16 @@
+#!/bin/sh
+
+INFO=$(cat /proc/cpuinfo 2> /dev/null)
+case $INFO in
+    *"TG3040"*)	export PLATFORM="Brick"	;;
+    *"0xd05"*) export PLATFORM="Flip" ;;
+esac
+
+
+if [ "$PLATFORM" = "Flip" ]; then
+  /mnt/SDCARD/pyui/miyoo/flip/startup.sh
+elif [ "$PLATFORM" = "Brick" ]; then 
+  /mnt/SDCARD/pyui/trim_brick.sh
+else
+  echo "Can not determine platform running on"
+fi

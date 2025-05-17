@@ -1,0 +1,89 @@
+name: Create Nightly
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to build'
+        required: true
+        default: 'main'
+
+jobs:
+  build-nightly:
+    runs-on: ubuntu-latest
+    outputs:
+      short_sha: ${{ steps.get_sha.outputs.short_sha }}
+    steps:
+      - name: Install 7-Zip
+        run: sudo apt-get update && sudo apt-get install -y p7zip-full
+
+      - name: Check out specified branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Get short commit SHA
+        id: get_sha
+        run: echo "short_sha=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Recombine large files
+        run: |
+          rm -f pyui/_large_files/common/libs.squashfs
+          cat pyui/_large_files/common/libs.squashfs_part* > pyui/_large_files/common/libs.squashfs
+          rm -f pyui/_large_files/common/libs.squashfs_part*
+
+          rm -f pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img
+          cat pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img_part* > pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img
+          rm -f pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img_part*
+
+      - name: Create 7z archive
+        run: |
+          7z a pyui-v${{ steps.get_sha.outputs.short_sha }}.7z ./ \
+            -xr'!.git' \
+            -xr'!.github' \
+            -xr'!.gitignore' \
+            -xr'!.gitattributes' \
+            -xr'!.gitkeep'
+
+      - name: Install GitHub CLI
+        run: sudo apt-get install -y gh
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME=nightly-${{ steps.get_sha.outputs.short_sha }}
+          FILE_NAME=pyui-v${{ steps.get_sha.outputs.short_sha }}.7z
+
+          # Get latest release tag if exists (ignore errors)
+          LATEST_TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName' 2>/dev/null || echo "")
+
+          # Get commit log since last tag (or full log if no tag)
+          if [ -n "$LATEST_TAG" ]; then
+            COMMIT_LOG=$(git log "$LATEST_TAG"..HEAD --pretty=format:"- %s")
+          else
+            COMMIT_LOG=$(git log --pretty=format:"- %s")
+          fi
+
+          # Delete old nightly tag if it exists
+          gh release delete "$TAG_NAME" -y || true
+
+          # Create new release with commit log
+          gh release create "$TAG_NAME" "$FILE_NAME" \
+            --title "Nightly Build $TAG_NAME" \
+            --notes "Automated nightly build from commit ${{ steps.get_sha.outputs.short_sha }}.
+
+Changes since last release:
+$COMMIT_LOG" \
+            --prerelease
+
+      - name: Prune old nightly builds (keep latest 10)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release list --limit 100 --json tagName,createdAt --jq \
+            '[.[] | select(.tagName | startswith("nightly-"))] | sort_by(.createdAt) | .[:-10] | .[].tagName' | \
+          while read tag; do
+            echo "Deleting old release: $tag"
+            gh release delete "$tag" -y
+          done
