@@ -47,7 +47,8 @@ jobs:
             -xr'!.github' \
             -xr'!.gitignore' \
             -xr'!.gitattributes' \
-            -xr'!.gitkeep'
+            -xr'!.gitkeep' \
+            -xr'!REAMDE.md'
 
       - name: Install GitHub CLI
         run: sudo apt-get install -y gh
