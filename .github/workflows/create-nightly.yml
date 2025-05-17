@@ -51,39 +51,34 @@ jobs:
 
       - name: Install GitHub CLI
         run: sudo apt-get install -y gh
+        
+      - name: Generate release notes
+        run: |
+          echo "Automated nightly build from commit ${{ steps.get_sha.outputs.short_sha }}." > release_notes.txt
+          echo "" >> release_notes.txt
+          echo "Changes since last release:" >> release_notes.txt
 
-      - name: Create or update GitHub Release
+          LATEST_TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName' 2>/dev/null || echo "")
+
+          if git rev-parse "$LATEST_TAG" >/dev/null 2>&1; then
+            git log "$LATEST_TAG"..HEAD --pretty=format:"- %s" >> release_notes.txt
+          else
+            git log --pretty=format:"- %s" >> release_notes.txt
+          fi
+
+      - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG_NAME=nightly-${{ steps.get_sha.outputs.short_sha }}
           FILE_NAME=pyui-v${{ steps.get_sha.outputs.short_sha }}.7z
 
-          # Get latest release tag if exists (ignore errors)
-          LATEST_TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName' 2>/dev/null || echo "")
-
-          # Get commit log since last tag (or full log if no tag)
-          if git rev-parse "$LATEST_TAG" >/dev/null 2>&1; then
-            COMMIT_LOG=$(git log "$LATEST_TAG"..HEAD --pretty=format:"- %s")
-          else
-            COMMIT_LOG=$(git log --pretty=format:"- %s")
-          fi
-
-          # Delete old nightly tag if it exists
           gh release delete "$TAG_NAME" -y || true
 
-          # Create new release
           gh release create "$TAG_NAME" "$FILE_NAME" \
             --title "Nightly Build $TAG_NAME" \
-            --notes-from-file <(cat <<EOF
-Automated nightly build from commit ${{ steps.get_sha.outputs.short_sha }}.
-
-Changes since last release:
-$COMMIT_LOG
-EOF
-) \
+            --notes-file release_notes.txt \
             --prerelease
-
 
       - name: Prune old nightly builds (keep latest 10)
         env:
