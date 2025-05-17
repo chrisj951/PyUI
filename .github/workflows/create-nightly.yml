@@ -63,7 +63,7 @@ jobs:
           LATEST_TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName' 2>/dev/null || echo "")
 
           # Get commit log since last tag (or full log if no tag)
-          if [ -n "$LATEST_TAG" ]; then
+          if git rev-parse "$LATEST_TAG" >/dev/null 2>&1; then
             COMMIT_LOG=$(git log "$LATEST_TAG"..HEAD --pretty=format:"- %s")
           else
             COMMIT_LOG=$(git log --pretty=format:"- %s")
@@ -72,11 +72,12 @@ jobs:
           # Delete old nightly tag if it exists
           gh release delete "$TAG_NAME" -y || true
 
-          # Create new release with commit log
+          # Create new release
           gh release create "$TAG_NAME" "$FILE_NAME" \
             --title "Nightly Build $TAG_NAME" \
             --notes "Automated nightly build from commit ${{ steps.get_sha.outputs.short_sha }}.\n\nChanges since last release:\n$COMMIT_LOG" \
             --prerelease
+
 
       - name: Prune old nightly builds (keep latest 10)
         env:
