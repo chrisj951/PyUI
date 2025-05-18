@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ ! -f /usr/l32 ]; then
+  /mnt/SDCARD/pyui/miyoo/flip/setup_mounts.sh
+fi
+
 #ENV Variables
 export PYSDL2_DLL_PATH="/mnt/SDCARD/App/PortMaster/portmaster/site-packages/sdl2dll/dll"
 export PATH="/mnt/SDCARD/spruce/flip/bin/:/mnt/SDCARD/App/PortMaster/portmaster/bin:$PATH"
