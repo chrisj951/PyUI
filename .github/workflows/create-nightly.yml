@@ -32,13 +32,13 @@ jobs:
 
       - name: Recombine large files
         run: |
-          rm -f pyui/_large_files/common/libs.squashfs
-          cat pyui/_large_files/common/libs.squashfs_part* > pyui/_large_files/common/libs.squashfs
-          rm -f pyui/_large_files/common/libs.squashfs_part*
+          rm -f source/pyui/_large_files/common/libs.squashfs
+          cat source/pyui/_large_files/common/libs.squashfs_part* > source/pyui/_large_files/common/libs.squashfs
+          rm -f source/pyui/_large_files/common/libs.squashfs_part*
 
-          rm -f pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img
-          cat pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img_part* > pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img
-          rm -f pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img_part*
+          rm -f source/pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img
+          cat source/pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img_part* > source/pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img
+          rm -f source/pyui/_large_files/miyoo/flip/miyoo355_rootfs_32.img_part*
 
       - name: Create 7z archive
         run: |
