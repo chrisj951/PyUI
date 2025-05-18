@@ -42,13 +42,12 @@ jobs:
 
       - name: Create 7z archive
         run: |
-          7z a pyui-v${{ steps.get_sha.outputs.short_sha }}.7z ./ \
+          cd source && 7z a ../pyui-v${{ steps.get_sha.outputs.short_sha }}.7z ./ \
             -xr'!.git' \
             -xr'!.github' \
             -xr'!.gitignore' \
             -xr'!.gitattributes' \
-            -xr'!.gitkeep' \
-            -xr'!REAMDE.md'
+            -xr'!.gitkeep' 
 
       - name: Install GitHub CLI
         run: sudo apt-get install -y gh
