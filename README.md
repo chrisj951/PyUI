@@ -11,7 +11,7 @@ and potentially others in the future
 
 | Device | Added | Status |
 | -- | -- | -- |
-| Miyoo Flip -- FW 20250228101926 | Initial | Work in progress |
+| Miyoo Flip -- FW 20250509213001 | Initial | Work in progress |
 
 
 ## Discord
