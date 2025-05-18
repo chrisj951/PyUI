@@ -13,6 +13,11 @@ is_retroarch_port() {
 }
 
 run_port() {
+
+    if [ ! -f /usr/l32 ]; then
+        /mnt/SDCARD/pyui/miyoo/flip/setup_mounts.sh
+    fi
+
     /mnt/SDCARD/pyui/miyoo/flip/bind-new-libmali.sh
 
     is_retroarch_port

@@ -23,6 +23,10 @@
     {
       "name": "Controls: (✓X360)-Nintendo",
       "launch": "control_switch.sh"
+    },
+    {
+      "name": "Launch",
+      "launch": "launch.sh"
     }
   ]
 }
