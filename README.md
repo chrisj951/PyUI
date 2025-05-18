@@ -14,3 +14,5 @@ and potentially others in the future
 | Miyoo Flip -- FW 20250228101926 | Initial | Work in progress |
 
 
+## Discord
+https://discord.gg/Z7AEPNAE9n
