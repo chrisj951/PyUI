@@ -1,6 +1,4 @@
-Open Source replacement for MainUI on Miyoo and Trim Devices
-and potentially others in the future
-
+New frontend for the Miyoo Flip w/ other devices to come in the future
 
 ### Features
 - Greatly improved themeing support
@@ -55,4 +53,5 @@ which I will make available if enough people are interested in that
    -  Testers from the Spruce Discord and 
       -  Special thanks to KuroZero for their testing and detailed reports
 - Shaun Inman - Development on MinUI making it easier to learn how to interact with the hardware
+- PortMaster team for making PortMaster and the ports
 - Rest of the community that has helped document how these handhelds work
