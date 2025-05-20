@@ -10,9 +10,13 @@ and potentially others in the future
 - Faster interface than stock Miyoo (No longer need to press to refresh roms)
 - Full compatability with stock Miyoo apps/emulators
 - PortMaster Support bundled
+    -   Menu when running ports included
 
 NOTE: This currently uses the stock OS emulators / setup. In the future this may change
 NOTE: While most functionality is built into PyUI, there is an option in settings to boot into the stock menu. This is to allow things like language support for the stock emulators, as well as analog stick calibration
+
+### Known Issues
+
 
 | Device | Added | Status |
 | -- | -- | -- |
