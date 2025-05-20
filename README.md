@@ -17,6 +17,14 @@ and potentially others in the future
 ### Discord
 https://discord.gg/Z7AEPNAE9n
 
+### Installation
+1) Setup a microSD card with the Stock OS (Can be downloaded here https://github.com/spruceUI/spruceOS/releases/flip0.0)
+2) Download the most recent build https://github.com/chrisj951/PyUI/releases
+3) Unzip the recent build on top of the sdcard with the stock setup, overwriting all files
+
+NOTE: This uses the same install method as MinUI. There is a way to run it without flashing anything 
+which I will make available if enough people are interested in that
+
 ### Sample Images
 ## Stock Look
 <img src="docs/images/themes/stock/main_menu.png" width=320 /><img src="docs/images/themes/stock/system_select.png" width=320 /><img src="docs/images/themes/stock/game_select.png" width=320 />
