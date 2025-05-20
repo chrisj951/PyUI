@@ -2,7 +2,7 @@
 
 killall runmiyoo.sh
 killall hardwareservice
-killall miyoo_inputd
+killall keymon
 
 if [ ! -d /mnt/SDCARD/Saves/userdata-flip ]; then
     mkdir /mnt/SDCARD/Saves/userdata-flip
