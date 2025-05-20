@@ -54,7 +54,8 @@ class BasicSettingsMenu(settings_menu.SettingsMenu):
                 Device.disable_wifi()
             else:
                 Device.enable_wifi()
-        else:
+
+        if(ControllerInput.A == input):
             self.wifi_menu.show_wifi_menu()
 
     def show_bt_menu(self, input):
@@ -139,7 +140,7 @@ class BasicSettingsMenu(settings_menu.SettingsMenu):
         option_list.append(
                 GridOrListEntry(
                         primary_text="WiFi",
-                        value_text="<    " + ("On" if Device.is_wifi_enabled() else "Off") + "    >",
+                        value_text="<    " + (Device.get_ip_addr_text()) + "    >",
                         image_path=None,
                         image_path_selected=None,
                         description=None,
@@ -198,11 +199,13 @@ class BasicSettingsMenu(settings_menu.SettingsMenu):
             
 
             if(list_view is None or self.theme_changed):
+                Display.clear_text_cache()
                 list_view = ViewCreator.create_view(
                     view_type=ViewType.ICON_AND_DESC,
                     top_bar_text="Settings", 
                     options=option_list,
                     selected_index=selected.get_index())
+                    
                 self.theme_changed = False
             else:
                 list_view.set_options(option_list)

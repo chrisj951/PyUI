@@ -25,6 +25,3 @@ class SearchGamesForSystemMenu(RomsMenuCommon):
 
     def run_rom_selection(self) :
         self._run_rom_selection(f"{self.game_system.display_name} Search")
-
-    def _run_game(self, selected_entry : RomInfo) -> subprocess.Popen:
-        return Device.run_game(selected_entry)

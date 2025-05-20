@@ -67,10 +67,10 @@ def verify_config_exists(config_path):
 def main():
     args = parse_arguments()
 
-    print("Arguments:", sys.argv)
-    print("logDir:", args.logDir)
-
     PyUiLogger.init(args.logDir, "PyUI")
+    PyUiLogger.get_logger().info(f"logDir: {args.logDir}")
+    PyUiLogger.get_logger().info(f"pyUiConfig: {args.pyUiConfig}")
+    PyUiLogger.get_logger().info(f"device: {args.device}")
 
     log_renderer_info()
 

@@ -80,3 +80,7 @@ class PyUiConfig:
     @classmethod
     def set_turbo_delay_ms(cls, delay):
         cls._data["turboDelayMs"] = delay
+
+    @classmethod
+    def enable_button_watchers(cls):
+        return cls._data.get("enableButtonWatchers", True)

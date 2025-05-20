@@ -20,18 +20,18 @@ from views.view_type import ViewType
 
 # Really quickly written just a proof of concept for testing
 
-PyUiLogger.init("/mnt/SDCARD/Saves/spruce/OptionSelectUI.log", "OptionSelectUI")
+PyUiLogger.init("/mnt/SDCARD/Saves/spruce/", "OptionSelectUI")
 
-config = PyUiConfig()
-config.load()
+PyUiConfig.init("/mnt/SDCARD/App/PyUI/py-ui-config.json")
 
-selected_theme = os.path.join(config["themeDir"],config["theme"])
+selected_theme = os.path.join(PyUiConfig.get("themeDir"),PyUiConfig.get("theme"))
                               
-Theme.init(os.path.join(config["themeDir"],config["theme"]))
 
 Device.init(MiyooFlip())
+Theme.init(os.path.join(PyUiConfig.get("themeDir"),PyUiConfig.get("theme")), Device.screen_width(), Device.screen_height())
+
 Display.init()
-Controller.init(config)
+Controller.init()
 
 title = sys.argv[1]
 input_json = sys.argv[2]
