@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cd $(dirname "$0")
+
+SDCARD_PATH=/mnt/SDCARD
+MIYOO_DIR=miyoo355
+
+if [ ! -f /usr/miyoo/bin/runmiyoo-original.sh ]; then
+	my355/init.sh
+fi
+
+poweroff
