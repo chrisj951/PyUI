@@ -4,6 +4,12 @@ killall runmiyoo.sh
 killall hardwareservice
 killall keymon
 
+#Restore MainUI if necessary
+if [ -f /mnt/SDCARD/miyoo355/app/MainUI.real ]; then
+    rm -f /mnt/SDCARD/miyoo355/app/MainUI
+    cp /mnt/SDCARD/miyoo355/app/MainUI.real /mnt/SDCARD/miyoo355/app/MainUI
+fi
+
 if [ ! -d /mnt/SDCARD/Saves/userdata-flip ]; then
     mkdir /mnt/SDCARD/Saves/userdata-flip
     cp -R /userdata/* /mnt/SDCARD/Saves/userdata-flip
