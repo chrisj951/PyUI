@@ -19,16 +19,16 @@ https://discord.gg/Z7AEPNAE9n
 
 ### Sample Images
 ## Stock Look
-<img src="docs/images/stock/main_menu.png" width=320 /><img src="docs/images/stock/system_select.png" width=320 /><img src="docs/images/stock/game_select.png" width=320 />
+<img src="docs/images/themes/stock/main_menu.png" width=320 /><img src="docs/images/themes/stock/system_select.png" width=320 /><img src="docs/images/themes/stock/game_select.png" width=320 />
 
 ## Stock Grid Layout
-<img src="docs/images/stock_grid/main_menu.png" width=320 /><img src="docs/images/stock_grid/system_select.png" width=320 /><img src="docs/images/stock_grid/game_select.png" width=320 />
+<img src="docs/images/themes/stock_grid/main_menu.png" width=320 /><img src="docs/images/themes/stock_grid/system_select.png" width=320 /><img src="docs/images/themes/stock_grid/game_select.png" width=320 />
 
 ## Minimal
-<img src="docs/images/minimal/main_menu.png" width=320 /><img src="docs/images/minimal/system_select.png" width=320 /><img src="docs/images/minimal/game_select.png" width=320 />
+<img src="docs/images/themes/minimal/main_menu.png" width=320 /><img src="docs/images/themes/minimal/system_select.png" width=320 /><img src="docs/images/themes/minimal/game_select.png" width=320 />
 
 ## Epic Artbook Noir (credit to Jamesinorbit for the images)
-<img src="docs/images/epic_artbook_noir/main_menu.png" width=320 /><img src="docs/images/epic_artbook_noir/system_select.png" width=320 /><img src="docs/images/epic_artbook_noir/game_select.png" width=320 />
+<img src="docs/images/themes/epic_artbook_noir/main_menu.png" width=320 /><img src="docs/images/themes/epic_artbook_noir/system_select.png" width=320 /><img src="docs/images/themes/epic_artbook_noir/game_select.png" width=320 />
 
 
 ## Thanks
