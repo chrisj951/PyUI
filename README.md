@@ -7,8 +7,8 @@ and potentially others in the future
     -   Most existing themes should also be compatible
     -   Press 'A' on the selected Theme to start modifying it
         -   Full information to come later
-- Faster interface than stock Miyoo (No longer need to press to refresh roms)
-- Full compatability with stock Miyoo apps/emulators
+- Faster interface than stock 
+- Full compatability with stock apps/emulators
 - PortMaster Support bundled
     -   Menu when running ports included
 
