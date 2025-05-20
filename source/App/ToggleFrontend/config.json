@@ -1,6 +1,0 @@
-{
-  "label": "Toggle Stock / PyUI",
-  "icon": "togglefrontend.png",
-  "launch": "launch.sh",
-  "description": "Toggle between Stock and PyUI"
-}
