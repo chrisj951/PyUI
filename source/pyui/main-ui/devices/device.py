@@ -233,3 +233,9 @@ class Device:
     @staticmethod  
     def get_ip_addr_text():
         return Device._impl.get_ip_addr_text()
+    
+    @staticmethod  
+    def launch_stock_os_menu():
+        return Device._impl.launch_stock_os_menu()
+    
+    

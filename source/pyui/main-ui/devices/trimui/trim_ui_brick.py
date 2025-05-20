@@ -716,3 +716,6 @@ class TrimUIBrick(DeviceCommon):
                 return "Error"
         
         return "None"
+    
+    def launch_stock_os_menu(self):
+        pass

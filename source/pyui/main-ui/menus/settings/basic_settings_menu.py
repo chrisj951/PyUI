@@ -102,6 +102,11 @@ class BasicSettingsMenu(settings_menu.SettingsMenu):
         if(ControllerInput.A == input):
             self.advance_settings_menu.show_menu()
 
+
+    def launch_stock_os_menu(self,input):
+        if(ControllerInput.A == input):
+            Device.launch_stock_os_menu()
+
     def build_options_list(self):
         option_list = []
         option_list.append(
@@ -171,6 +176,18 @@ class BasicSettingsMenu(settings_menu.SettingsMenu):
                         description=None,
                         icon=None,
                         value=self.change_theme
+                    )
+            )
+            
+        option_list.append(
+                GridOrListEntry(
+                        primary_text="Stock OS Menu",
+                        value_text=None,
+                        image_path=None,
+                        image_path_selected=None,
+                        description=None,
+                        icon=None,
+                        value=self.launch_stock_os_menu
                     )
             )
             

@@ -809,3 +809,6 @@ class MiyooFlip(DeviceCommon):
                 return "Error"
         
         return "None"
+    
+    def launch_stock_os_menu(self):
+        self.run_app("/usr/miyoo/bin/runmiyoo-original.sh")
