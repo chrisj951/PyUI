@@ -3,15 +3,20 @@ and potentially others in the future
 
 
 ### Features
-- Faster interface than stock Miyoo
+- Greatly improved themeing support
+    -   Most existing themes should also be compatible
+    -   Press 'A' on the selected Theme to start modifying it
+        -   Full information to come later
+- Faster interface than stock Miyoo (No longer need to press to refresh roms)
 - Full compatability with stock Miyoo apps/emulators
-- Improved themeing support 
-- PM Support
+- PortMaster Support bundled
 
+NOTE: This currently uses the stock OS emulators / setup. In the future this may change
+NOTE: While most functionality is built into PyUI, there is an option in settings to boot into the stock menu. This is to allow things like language support for the stock emulators, as well as analog stick calibration
 
 | Device | Added | Status |
 | -- | -- | -- |
-| Miyoo Flip -- FW 20250509213001 | Initial | Work in progress |
+| Miyoo Flip -- Any 2025 FW | Initial | Work in progress |
 
 
 ### Discord
