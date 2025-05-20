@@ -1,13 +1,13 @@
 {
+    "showBottomBar": false,
     "name": "Spruce",
     "author": "@chrisbastion",
     "description": "Minimal (MinUI inspired)",
-    "mainMenuViewType":"TEXT_ONLY",
-    "systemSelectViewType":"TEXT_ONLY",
-    "appMenuViewType":"TEXT_ONLY",
-    "gameSelectionViewType":"TEXT_ONLY",
-    "showBottomBar": false,
-    "showIndexText":false,
+    "mainMenuViewType": "TEXT_ONLY",
+    "systemSelectViewType": "TEXT_ONLY",
+    "appMenuViewType": "TEXT_ONLY",
+    "gameSelectionViewType": "TEXT_ONLY",
+    "showIndexText": false,
     "batteryPercentage": {
         "color": "#FFFFFF",
         "font": "nunwen.ttf",
@@ -45,6 +45,7 @@
         "size": 24,
         "color": "#FFFFFF",
         "selectedcolor": "#000000"
-
-    }
+    },
+    "listFontSize": 24,
+    "mainMenuColCount": 4
 }
