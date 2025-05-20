@@ -56,7 +56,8 @@ class GridView(View):
             self.selected = len(self.options) + self.selected
         self.selected = max(0, self.selected)
 
-        self.selected = self.selected % (len(self.options))
+        if(len(self.options) > 0):
+            self.selected = self.selected % (len(self.options))
 
         while(self.selected < self.current_left):
             if(self.rows > 1):
