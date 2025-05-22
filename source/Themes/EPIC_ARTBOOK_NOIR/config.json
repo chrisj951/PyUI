@@ -45,9 +45,9 @@
     },
     "gameSystemSelectColCount": 1,
     "gameSystemSelectRowCount": 1,
-    "gameSelectionViewType": "GRID",
+    "gameSelectionViewType": "CAROUSEL",
     "gameSelectRowCount": 1,
-    "gameSelectColCount": 1,
+    "gameSelectColCount": 5,
     "gameSelectImgWidth": 640,
     "gameSelectImgHeight": 355,
     "gameSelectShowSelectedBgGridMode": false,
@@ -55,5 +55,7 @@
     "skipMainMenu": true,
     "setTopBarTextToGameSelection": true,
     "systemSelectShowSelectedBgGridMode": false,
-    "systemSelectShowTextGridMode": false
+    "systemSelectShowTextGridMode": false,
+    "systemSelectViewType": "GRID",
+    "carouselGameSelectSidesHangOff": true
 }
