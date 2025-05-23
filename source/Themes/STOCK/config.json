@@ -5,38 +5,38 @@
     "description": "Miyoo Stock Theme",
     "batteryPercentage": {
         "color": "#FFFFFF",
-        "font": "nunwen.ttf",
+        "font": "HENB.TTF",
         "size": 18
     },
     "title": {
-        "font": "nunwen.ttf",
+        "font": "HENB.TTF",
         "size": 25,
         "color": "#FFFFFF"
     },
     "hint": {
-        "font": "nunwen.ttf",
+        "font": "HENB.TTF",
         "size": 25,
         "color": "#FFFFFF"
     },
     "currentpage": {
-        "font": "nunwen.ttf",
+        "font": "HENB.TTF",
         "size": 22,
         "color": "#FFFFFF"
     },
     "total": {
-        "font": "nunwen.ttf",
+        "font": "HENB.TTF",
         "size": 22,
         "color": "#FFFFFF"
     },
     "grid": {
-        "font": "nunwen.ttf",
+        "font": "HENB.TTF",
         "grid1x4": 25,
-        "grid3x4": 18,
+        "grid3x4": 25,
         "color": "#FFFFFF",
         "selectedcolor": "#FFFFFF"
     },
     "list": {
-        "font": "nunwen.ttf",
+        "font": "HENB.TTF",
         "size": 24,
         "color": "#FFFFFF",
         "selectedcolor": "#FFFFFF"

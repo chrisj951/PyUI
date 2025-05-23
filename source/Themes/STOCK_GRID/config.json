@@ -41,21 +41,16 @@
         "color": "#FFFFFF",
         "selectedcolor": "#FFFFFF"
     },
-    "gameSelectionViewType": "CAROUSEL",
-    "gameSelectImgWidth": 180,
-    "gameSelectImgHeight": 360,
+    "gameSelectionViewType": "GRID",
+    "gameSelectImgWidth": 140,
+    "gameSelectImgHeight": 140,
     "gameSelectShowTextGridMode": false,
     "gameSelectShowSelectedBgGridMode": true,
     "setTopBarTextToGameSelection": true,
     "gridMultiRowSelBgResizePadWidth": 20,
     "gridMultiRowSelBgResizePadHeight": 20,
     "gridMultiRowExtraYPad": 17,
-    "gameSelectGridResizeType": "FIT",
-    "mainMenuColCount": 5,
-    "gameSelectRowCount": 1,
-    "gameSelectColCount": 5,
-    "systemSelectViewType": "GRID",
-    "carouselGameSelectPrimaryImgWidth": 40,
-    "carouselGameSelectShrinkFurtherAway": false,
-    "carouselGameSelectSidesHangOff": true
+    "gameSelectGridResizeType": "ZOOM",
+    "mainMenuColCount": 5
+
 }
