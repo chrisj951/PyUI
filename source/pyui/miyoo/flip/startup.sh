@@ -37,5 +37,5 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/miyoo/lib"
 /usr/miyoo/bin/hardwareservice &
 
 while true; do
-  /mnt/SDCARD/pyui/bin/python3 /mnt/SDCARD/pyui/main-ui/mainui.py
+  /mnt/SDCARD/pyui/bin/python3 /mnt/SDCARD/pyui/main-ui/mainui.py -device MIYOO_FLIP
 done

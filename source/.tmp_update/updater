@@ -10,7 +10,7 @@ esac
 if [ "$PLATFORM" = "Flip" ]; then
   /mnt/SDCARD/pyui/miyoo/flip/startup.sh
 elif [ "$PLATFORM" = "Brick" ]; then 
-  /mnt/SDCARD/pyui/trim_brick.sh
+  /mnt/SDCARD/pyui/trimui/brick/startup.sh
 else
   echo "Can not determine platform running on"
 fi
