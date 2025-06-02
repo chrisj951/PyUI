@@ -51,13 +51,13 @@ jobs:
 
       - name: Create 7z archive
         run: |
-          cd source && 7z a ../pyui-v${{ steps.get_sha.outputs.short_sha }}.7z ./ \
+          cd source && 7z a ../pyui-v${{ steps.set_version_suffix.outputs.version_suffix }}.7z ./ \
             -xr'!.git' \
             -xr'!.github' \
             -xr'!.gitignore' \
             -xr'!.gitattributes' \
             -xr'!.gitkeep'
-
+            
       - name: Install GitHub CLI
         run: sudo apt-get install -y gh
 
@@ -84,7 +84,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG_NAME=pyui-${{ steps.set_version_suffix.outputs.version_suffix }}
-          FILE_NAME=pyui-v${{ steps.get_sha.outputs.short_sha }}.7z
+          FILE_NAME=pyui-v${{ steps.set_version_suffix.outputs.version_suffix }}.7z
           THEMES_FILE=pyui-themes-v${{ steps.set_version_suffix.outputs.version_suffix }}.7z
 
           gh release delete "$TAG_NAME" -y || true
