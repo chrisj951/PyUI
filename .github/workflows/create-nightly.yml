@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       short_sha: ${{ steps.get_sha.outputs.short_sha }}
+      version_suffix: ${{ steps.set_version_suffix.outputs.version_suffix }}
     steps:
       - name: Install 7-Zip
         run: sudo apt-get update && sudo apt-get install -y p7zip-full
@@ -29,6 +30,14 @@ jobs:
       - name: Get short commit SHA
         id: get_sha
         run: echo "short_sha=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      # New step to define VERSION_SUFFIX once and for all
+      - name: Set VERSION_SUFFIX
+        id: set_version_suffix
+        run: |
+          DATE=$(date +%F)
+          VERSION_SUFFIX=${DATE}-${{ steps.get_sha.outputs.short_sha }}
+          echo "version_suffix=$VERSION_SUFFIX" >> "$GITHUB_OUTPUT"
 
       - name: Recombine large files
         run: |
@@ -47,11 +56,11 @@ jobs:
             -xr'!.github' \
             -xr'!.gitignore' \
             -xr'!.gitattributes' \
-            -xr'!.gitkeep' 
+            -xr'!.gitkeep'
 
       - name: Install GitHub CLI
         run: sudo apt-get install -y gh
-        
+
       - name: Generate release notes
         run: |
           echo "Automated nightly build from commit ${{ steps.get_sha.outputs.short_sha }}." > release_notes.txt
@@ -68,19 +77,18 @@ jobs:
 
       - name: Create Themes archive
         run: |
-          7z a pyui-themes-v${{ steps.get_sha.outputs.short_sha }}.7z ./Themes
-          
+          7z a pyui-themes-v${{ steps.set_version_suffix.outputs.version_suffix }}.7z ./Themes
+
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          DATE=$(date +%F)
-          VERSION_SUFFIX=${DATE}-${{ steps.get_sha.outputs.short_sha }}
-          TAG_NAME=pyui-${DATE}-${VERSION_SUFFIX}
+          TAG_NAME=pyui-${{ steps.set_version_suffix.outputs.version_suffix }}
           FILE_NAME=pyui-v${{ steps.get_sha.outputs.short_sha }}.7z
-          gh release delete "$TAG_NAME" -y || true
+          THEMES_FILE=pyui-themes-v${{ steps.set_version_suffix.outputs.version_suffix }}.7z
 
-          gh release create "$TAG_NAME" "$FILE_NAME" "pyui-themes-${VERSION_SUFFIX}.7z" \
+          gh release delete "$TAG_NAME" -y || true
+          gh release create "$TAG_NAME" "$FILE_NAME" "$THEMES_FILE" \
             --title "Nightly Build $TAG_NAME" \
             --notes-file release_notes.txt \
             --prerelease
