@@ -5,7 +5,9 @@ import shutil
 import sys
 import threading
 from devices.device import Device
+from devices.miyoo.flip.miyoo_a30 import MiyooA30
 from devices.trimui.trim_ui_brick import TrimUIBrick
+from devices.trimui.trim_ui_smart_pro import TrimUISmartPro
 from menus.games.utils.favorites_manager import FavoritesManager
 from menus.games.utils.recents_manager import RecentsManager
 import sdl2
@@ -19,6 +21,7 @@ from devices.miyoo.flip.miyoo_flip import MiyooFlip
 from utils.config_copier import ConfigCopier
 from utils.logger import PyUiLogger
 from utils.py_ui_config import PyUiConfig
+from utils.py_ui_state import PyUiState
 
 
 def parse_arguments():
@@ -40,6 +43,10 @@ def initialize_device(device):
         Device.init(MiyooFlip())
     elif "TRIMUI_BRICK" == device:
         Device.init(TrimUIBrick())
+    elif "TRIMUI_SMART_PRO" == device:
+        Device.init(TrimUISmartPro())
+    elif "MIYOO_A30" == device:
+        Device.init(MiyooA30())
     else:
         raise RuntimeError(f"{device} is not a supported device")
 
@@ -81,6 +88,7 @@ def main():
     PyUiLogger.get_logger().info(f"{selected_theme}")
 
     initialize_device(args.device)
+    PyUiState.init(Device.get_state_path())
 
     Theme.init(selected_theme, Device.screen_width(), Device.screen_height())
     Display.init()

@@ -80,6 +80,7 @@ class BasicSettingsMenu(settings_menu.SettingsMenu):
         )    
     
     def change_theme(self, input):
+        self.anything_theme_related_changed = True
         theme_folders = self.get_theme_folders()
         selected_index = theme_folders.index(PyUiConfig.get("theme"))
 
@@ -102,6 +103,7 @@ class BasicSettingsMenu(settings_menu.SettingsMenu):
             PyUiConfig.set("theme",theme_folders[selected_index])
             PyUiConfig.save()      
             self.theme_changed = True
+            Display.restore_bg()
 
     def launch_extra_settings(self,input):
         if(ControllerInput.A == input):
@@ -198,7 +200,7 @@ class BasicSettingsMenu(settings_menu.SettingsMenu):
         selected = Selection(None, None, 0)
         list_view = None
         self.theme_changed = False
-        self.anything_theme_related_changed = True
+        self.anything_theme_related_changed = False
         while(selected is not None):
             option_list = self.build_options_list()
             
@@ -224,5 +226,7 @@ class BasicSettingsMenu(settings_menu.SettingsMenu):
             elif(ControllerInput.B == selected.get_input()):
                 selected = None
         
-        return self.anything_theme_related_changed
+        if(self.anything_theme_related_changed):
+            os._exit(0)
+        return False #shouldnt need to do this but jic
 

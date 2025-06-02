@@ -27,7 +27,6 @@ class RomSelectOptionsBuilder:
 
         try:
             roms_index = parts.index("Roms")
-            first_after_roms = parts[roms_index + 1]
         except (ValueError, IndexError):
             return None  # "Roms" not in path or nothing after "Roms"
 
@@ -38,8 +37,20 @@ class RomSelectOptionsBuilder:
         if os.path.exists(image_path):
             return image_path
         else:
-            return None
+            # Attempt to construct alternate path by replacing "Roms" with "Imgs"
+            imgs_older_equal_to_roms_parts = parts.copy()
+            imgs_older_equal_to_roms_parts[roms_index] = "Imgs"
+            imgs_folder_equal_to_roms_path = os.path.join(os.sep.join(imgs_older_equal_to_roms_parts[:-1]), base_name + ".png")
 
+            if os.path.exists(imgs_folder_equal_to_roms_path):
+                return imgs_folder_equal_to_roms_path
+            else:
+                #Check for png in same dir
+                same_dir_png = os.path.join(root_dir, base_name + ".png")
+                if os.path.exists(same_dir_png):
+                    return same_dir_png
+                else:
+                    return None
 
     def _build_favorites_dict(self):
         favorites = Device.parse_favorites()
