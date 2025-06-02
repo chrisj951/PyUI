@@ -1,0 +1,67 @@
+{
+    "showBottomBar": true,
+    "name": "Colorful",
+    "author": "viking, iShade",
+    "description": "Colorful",
+    "title": {
+        "font": "nunwen.ttf",
+        "size": 40,
+        "color": "#000000"
+    },
+    "hint": {
+        "font": "nunwen.ttf",
+        "size": 40,
+        "color": "#000000"
+    },
+    "currentpage": {
+        "font": "nunwen.ttf",
+        "size": 35,
+        "color": "#000000"
+    },
+    "total": {
+        "font": "nunwen.ttf",
+        "size": 35,
+        "color": "#000000"
+    },
+    "grid": {
+        "font": "nunwen.ttf",
+        "grid1x4": 40,
+        "grid3x4": 28,
+        "color": "#6e6f6d",
+        "selectedcolor": "#000000"
+    },
+    "list": {
+        "font": "nunwen.ttf",
+        "size": 38,
+        "color": "#000000",
+        "selectedcolor": "#FFFFFF"
+    },
+    "shadowed": {
+        "font": "nunwen.ttf",
+        "shadowedFontSize": 64,
+        "shadowedFontBackdropSize": 64,
+        "shadowedFontColor": "#FFFFFF",
+        "shadowedFontBackdropColor": "#000000",
+        "shadowedFontSmallSize": 41,
+        "shadowedFontBackdropSmallSize": 41,
+        "shadowedFontSmallColor": "#FFFFFF",
+        "shadowedFontBackdropSmallColor": "#000000"
+    },
+    "gameSelectionViewType": "GRID",
+    "systemSelectViewType": "FULLSCREEN_GRID",
+    "gameSelectImgWidth": 224,
+    "gameSelectImgHeight": 224,
+    "gridGameSelectImgWidth": 224,
+    "gridGameSelectImgHeight": 224,
+    "listGameSelectImgWidth": 470,
+    "listGameSelectImgHeight": 470,
+    "gameSelectShowTextGridMode": false,
+    "gameSelectShowSelectedBgGridMode": true,
+    "setTopBarTextToGameSelection": true,
+    "gridMultiRowSelBgResizePadWidth": 32,
+    "gridMultiRowSelBgResizePadHeight": 32,
+    "gridMultiRowExtraYPad": 27,
+    "gameSelectGridResizeType": "ZOOM",
+    "skipMainMenu": true,
+    "mainMenuColCount": 5
+}

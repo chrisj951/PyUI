@@ -1,0 +1,61 @@
+{
+    "showBottomBar": false,
+    "name": "Epic ArtBook Noir",
+    "author": "Jamesinorbit",
+    "description": "Epic ArtBook Noir modified from Jamesinorbit's for dajishou",
+    "ignoreTopAndBottomBarForLayout": true,
+    "showIndexText": false,
+    "batteryPercentage": {
+        "color": "#FFFFFF",
+        "font": "nunwen.ttf",
+        "size": 18
+    },
+    "title": {
+        "font": "nunwen.ttf",
+        "size": 25,
+        "color": "#FFFFFF"
+    },
+    "hint": {
+        "font": "nunwen.ttf",
+        "size": 25,
+        "color": "#FFFFFF"
+    },
+    "currentpage": {
+        "font": "nunwen.ttf",
+        "size": 22,
+        "color": "#FFFFFF"
+    },
+    "total": {
+        "font": "nunwen.ttf",
+        "size": 22,
+        "color": "#FFFFFF"
+    },
+    "grid": {
+        "font": "nunwen.ttf",
+        "grid1x4": 25,
+        "grid3x4": 18,
+        "color": "#FFFFFF",
+        "selectedcolor": "#000000"
+    },
+    "list": {
+        "font": "nunwen.ttf",
+        "size": 24,
+        "color": "#FFFFFF",
+        "selectedcolor": "#000000"
+    },
+    "gameSystemSelectColCount": 1,
+    "gameSystemSelectRowCount": 1,
+    "gameSelectionViewType": "CAROUSEL",
+    "gameSelectRowCount": 1,
+    "gameSelectColCount": 5,
+    "gameSelectImgWidth": 640,
+    "gameSelectImgHeight": 355,
+    "gameSelectShowSelectedBgGridMode": false,
+    "gameSelectShowTextGridMode": false,
+    "skipMainMenu": true,
+    "setTopBarTextToGameSelection": true,
+    "systemSelectShowSelectedBgGridMode": false,
+    "systemSelectShowTextGridMode": false,
+    "systemSelectViewType": "GRID",
+    "carouselGameSelectSidesHangOff": true
+}

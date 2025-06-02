@@ -1,0 +1,45 @@
+{
+    "showBottomBar": true,
+    "name": "Stock",
+    "author": "Miyoo",
+    "description": "Miyoo Stock Theme",
+    "batteryPercentage": {
+        "color": "#FFFFFF",
+        "font": "HENB.TTF",
+        "size": 28
+    },
+    "title": {
+        "font": "HENB.TTF",
+        "size": 40,
+        "color": "#FFFFFF"
+    },
+    "hint": {
+        "font": "HENB.TTF",
+        "size": 40,
+        "color": "#FFFFFF"
+    },
+    "currentpage": {
+        "font": "HENB.TTF",
+        "size": 35,
+        "color": "#FFFFFF"
+    },
+    "total": {
+        "font": "HENB.TTF",
+        "size": 35,
+        "color": "#FFFFFF"
+    },
+    "grid": {
+        "font": "HENB.TTF",
+        "grid1x4": 40,
+        "grid3x4": 40,
+        "color": "#FFFFFF",
+        "selectedcolor": "#FFFFFF"
+    },
+    "list": {
+        "font": "HENB.TTF",
+        "size": 38,
+        "color": "#FFFFFF",
+        "selectedcolor": "#FFFFFF"
+    },
+    "mainMenuColCount": 4
+}
