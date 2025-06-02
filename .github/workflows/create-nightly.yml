@@ -74,12 +74,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG_NAME=nightly-${{ steps.get_sha.outputs.short_sha }}
+          DATE=$(date +%F)
+          VERSION_SUFFIX=${DATE}-${{ steps.get_sha.outputs.short_sha }}
+          TAG_NAME=pyui-${DATE}-${VERSION_SUFFIX}
           FILE_NAME=pyui-v${{ steps.get_sha.outputs.short_sha }}.7z
-
           gh release delete "$TAG_NAME" -y || true
 
-          gh release create "$TAG_NAME" "$FILE_NAME" "pyui-themes-v${{ steps.get_sha.outputs.short_sha }}.7z" \
+          gh release create "$TAG_NAME" "$FILE_NAME" "pyui-themes-${VERSION_SUFFIX}.7z" \
             --title "Nightly Build $TAG_NAME" \
             --notes-file release_notes.txt \
             --prerelease
