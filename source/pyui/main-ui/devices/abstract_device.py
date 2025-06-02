@@ -223,3 +223,6 @@ class AbstractDevice(ABC):
     def get_state_path(self):
         pass
 
+    @abstractmethod
+    def remap_buttons(self):
+        pass

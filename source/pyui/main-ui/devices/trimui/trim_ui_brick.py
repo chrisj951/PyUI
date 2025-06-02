@@ -60,6 +60,7 @@ class TrimUIBrick(TrimUIDevice):
             
         config_volume = self.system_config.get_volume()
         self._set_volume(config_volume)
+        super().__init__()
             
     #Untested
     @throttle.limit_refresh(5)

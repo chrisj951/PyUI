@@ -12,11 +12,15 @@ from devices.miyoo_trim_common import MiyooTrimCommon
 from devices.utils.process_runner import ProcessRunner
 from devices.wifi.wifi_connection_quality_info import WiFiConnectionQualityInfo
 from games.utils.game_entry import GameEntry
+from menus.settings.button_remapper import ButtonRemapper
 from utils import throttle
 from utils.logger import PyUiLogger
 
 class TrimUIDevice(DeviceCommon):
     
+    def __init__(self):
+        self.button_remapper = ButtonRemapper(self.system_config)
+
     def ensure_wpa_supplicant_conf(self):
         MiyooTrimCommon.ensure_wpa_supplicant_conf()
 
@@ -115,15 +119,15 @@ class TrimUIDevice(DeviceCommon):
         mapping = self.sdl_button_to_input.get(sdl_input, ControllerInput.UNKNOWN)
         if(ControllerInput.UNKNOWN == mapping):
             PyUiLogger.get_logger().error(f"Unknown input {sdl_input}")
-        return mapping
+        return self.button_remapper.get_mappping(mapping)
     
     def map_key(self, key_code):
         if(116 == key_code):
-            return ControllerInput.POWER_BUTTON
+            return self.button_remapper.get_mappping(ControllerInput.POWER_BUTTON)
         if(115 == key_code):
-            return ControllerInput.VOLUME_UP
+            return self.button_remapper.get_mappping(ControllerInput.VOLUME_UP)
         elif(114 == key_code):
-            return ControllerInput.VOLUME_DOWN
+            return self.button_remapper.get_mappping(ControllerInput.VOLUME_DOWN)
         else:
             PyUiLogger.get_logger().debug(f"Unrecognized keycode {key_code}")
             return None
@@ -261,3 +265,5 @@ class TrimUIDevice(DeviceCommon):
     def supports_analog_calibration(self):
         return False
 
+    def remap_buttons(self):
+        self.button_remapper.remap_buttons()

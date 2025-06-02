@@ -84,6 +84,7 @@ class MiyooFlip(MiyooDevice):
         self.init_bluetooth()
         config_volume = self.system_config.get_volume()
         self._set_volume(config_volume)
+        super().__init__()
 
     def init_bluetooth(self):
         try:
@@ -200,4 +201,3 @@ class MiyooFlip(MiyooDevice):
     def _set_brightness_to_config(self):
         ProcessRunner.run(["modetest", "-M", "rockchip", "-a", "-w", 
                                      "179:brightness:"+str(self.system_config.brightness * 5)])
-

@@ -238,5 +238,9 @@ class Device:
     def get_state_path():
         return Device._impl.get_state_path()
     
+    @staticmethod
+    def remap_buttons():
+        return Device._impl.remap_buttons()
+    
     
     
