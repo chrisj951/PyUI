@@ -41,5 +41,18 @@
         "color": "#FFFFFF",
         "selectedcolor": "#FFFFFF"
     },
+    "gameSelectImgWidth": 140,
+    "gameSelectImgHeight": 140,
+    "gridGameSelectImgWidth": 140,
+    "gridGameSelectImgHeight": 140,
+    "listGameSelectImgWidth": 294,
+    "listGameSelectImgHeight": 294,
+    "gameSelectShowTextGridMode": false,
+    "gameSelectShowSelectedBgGridMode": true,
+    "setTopBarTextToGameSelection": true,
+    "gridMultiRowSelBgResizePadWidth": 20,
+    "gridMultiRowSelBgResizePadHeight": 20,
+    "gridMultiRowExtraYPad": 17,
+    "gameSelectGridResizeType": "ZOOM",
     "mainMenuColCount": 4
 }
