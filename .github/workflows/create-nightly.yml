@@ -66,6 +66,10 @@ jobs:
             git log --pretty=format:"- %s" >> release_notes.txt
           fi
 
+      - name: Create Themes archive
+        run: |
+          7z a pyui-themes-v${{ steps.get_sha.outputs.short_sha }}.7z ./source/Themes
+          
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -75,7 +79,7 @@ jobs:
 
           gh release delete "$TAG_NAME" -y || true
 
-          gh release create "$TAG_NAME" "$FILE_NAME" \
+          gh release create "$TAG_NAME" "$FILE_NAME" "pyui-themes-v${{ steps.get_sha.outputs.short_sha }}.7z" \
             --title "Nightly Build $TAG_NAME" \
             --notes-file release_notes.txt \
             --prerelease
