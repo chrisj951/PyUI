@@ -41,10 +41,10 @@ class MiyooGameList:
                 else:
                     file_name = path
 
-            # Make image path relative to the XML file's directory
-            image_path = os.path.join(base_dir, image[2:] if image.startswith('./') else image)
-            entry = GameEntry(game_id, source, path, image_path, name)
-            self.games_by_file_name[file_name] = entry
+                # Make image path relative to the XML file's directory
+                image_path = os.path.join(base_dir, image[2:] if image.startswith('./') else image)
+                entry = GameEntry(game_id, source, path, image_path, name)
+                self.games_by_file_name[file_name] = entry
         except Exception as e:
             PyUiLogger.get_logger().error(f"Error loading XML file '{xml_file}': {e}")
 
