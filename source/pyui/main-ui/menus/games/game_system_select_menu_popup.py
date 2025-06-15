@@ -21,12 +21,12 @@ class GameSystemSelectMenuPopup:
     def execute_game_search(self, game_system, input_value):
         search_txt = OnScreenKeyboard().get_input("Game Search:")
         if(search_txt is not None):
-            SearchGamesForSystemMenu(game_system, search_txt.upper()).run_rom_selection()
+            return SearchGamesForSystemMenu(game_system, search_txt.upper()).run_rom_selection()
     
     def all_system_game_search(self, input_value):
         search_txt = OnScreenKeyboard().get_input("Game Search:")
         if(search_txt is not None):
-            SearchedRomsMenu(search_txt.upper()).run_rom_selection()
+            return SearchedRomsMenu(search_txt.upper()).run_rom_selection()
 
     def open_settings(self, input):
         if (ControllerInput.A == input):

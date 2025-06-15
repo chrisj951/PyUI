@@ -168,6 +168,19 @@ class AbstractDevice(ABC):
     @abstractmethod
     def raise_saturation(self):
         pass
+    
+    @property
+    @abstractmethod
+    def hue(self):
+        pass
+
+    @abstractmethod
+    def lower_hue(self):
+        pass
+
+    @abstractmethod
+    def raise_hue(self):
+        pass
 
     @abstractmethod
     def change_volume(self, amount):

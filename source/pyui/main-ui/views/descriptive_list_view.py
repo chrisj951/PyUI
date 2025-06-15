@@ -23,6 +23,7 @@ class DescriptiveListView(ListView):
         self.max_rows = (Display.get_usable_screen_height(force_include_top_bar=True) // self.each_entry_height)
         self.current_top = 0
         self.current_bottom = min(self.max_rows,len(options))
+        self.center_selection()
 
     def set_options(self, options):
         self.options = options

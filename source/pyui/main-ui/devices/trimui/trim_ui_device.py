@@ -58,6 +58,10 @@ class TrimUIDevice(DeviceCommon):
         with open("/sys/devices/virtual/disp/disp/attr/enhance_bright", "w") as f:
             f.write(str(self.system_config.brightness * 5))
 
+    def _set_hue_to_config(self):
+        with open("/sys/devices/virtual/disp/disp/attr/color_temperature", "w") as f:
+            f.write(str((self.system_config.hue * 5) - 50))
+            
     def _set_volume(self, user_volume):
         from display.display import Display
         if(user_volume < 0):

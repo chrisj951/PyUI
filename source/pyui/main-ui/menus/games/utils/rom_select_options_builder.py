@@ -73,7 +73,6 @@ class RomSelectOptionsBuilder:
     def build_rom_list(self, game_system,filter: Callable[[str], bool] = lambda a: True, subfolder = None) -> list[GridOrListEntry]:
         file_rom_list = []
         folder_rom_list = []
-        print(f"Building rom list for {game_system.folder_name} in {subfolder}")
         valid_files, valid_folders = self.rom_utils.get_roms(game_system.folder_name, subfolder)
         
 

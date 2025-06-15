@@ -121,7 +121,24 @@ class DeviceCommon(AbstractDevice):
             self.system_config.save_config()
             self._set_saturation_to_config()
 
+    def lower_hue(self):
+        self.system_config.reload_config()
+        if(self.system_config.hue > 0):
+            self.system_config.set_hue(self.system_config.hue - 1)
+            self.system_config.save_config()
+            self._set_hue_to_config()
 
+    def raise_hue(self):
+        self.system_config.reload_config()
+        if(self.system_config.hue < 20):
+            self.system_config.set_hue(self.system_config.hue + 1)
+            self.system_config.save_config()
+            self._set_hue_to_config()
+
+    @property
+    def hue(self):
+        return self.system_config.get_hue()
+    
     @property
     def lumination(self):
         return self.system_config.backlight

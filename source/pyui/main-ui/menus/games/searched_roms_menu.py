@@ -28,4 +28,4 @@ class SearchedRomsMenu(RomsMenuCommon):
         return roms
 
     def run_rom_selection(self) :
-        self._run_rom_selection("Game Search")
+        return self._run_rom_selection("Game Search")

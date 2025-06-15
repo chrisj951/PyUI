@@ -134,7 +134,6 @@ class DaijishoThemeIndex:
                 elif(uniquename is not None):
                     return self._convert_if_needed(uniquename)
         
-        PyUiLogger.get_logger().info(f"No image found for {system}")
         return self.get_default_filename()
 
     def get_default_filename(self):

@@ -75,7 +75,7 @@ class Display:
     bg_canvas = None
     render_canvas = None
     bg_path = ""
-    page = ""
+    page_bg = ""
     top_bar = TopBar()
     bottom_bar = BottomBar()
     window = None
@@ -217,14 +217,18 @@ class Display:
                 PyUiLogger.get_logger().error("Failed to create texture from surface")
 
     @classmethod
-    def set_page(cls, page):
-        if(page != cls.page):
-            cls.page = page 
-            background = Theme.background(page)
+    def set_page_bg(cls, page_bg):
+        if(page_bg != cls.page_bg):
+            cls.page_bg = page_bg 
+            background = Theme.background(page_bg)
             if(os.path.exists(background)):
                 cls.set_new_bg(background)
             else:
                 PyUiLogger.get_logger().debug(f"Theme did not provide bg for {background}")
+
+    @classmethod
+    def set_selected_tab(cls, tab):
+        cls.top_bar.set_selected_tab(tab)
 
     @classmethod
     def _load_font(cls, font_purpose):
@@ -615,7 +619,7 @@ class Display:
         sdl2.SDL_SetRenderTarget(cls.renderer.renderer, None)
 
         if Device.should_scale_screen():
-            scaled_canvas = cls.scale_texture_to_fit(cls.render_canvas, Device.output_screen_width, Device.output_screen_height)
+            scaled_canvas = cls.scale_texture_to_fit(cls.render_canvas, Device.output_screen_width(), Device.output_screen_height())
             sdl2.SDL_RenderCopy(cls.renderer.sdlrenderer, scaled_canvas, None, None)
             sdl2.SDL_DestroyTexture(scaled_canvas)
         elif(0 == Device.screen_rotation()):

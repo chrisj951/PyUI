@@ -26,7 +26,7 @@ class GameSelectMenuPopup:
         from menus.games.search_games_for_system_menu import SearchGamesForSystemMenu
         search_txt = OnScreenKeyboard().get_input("Game Search:")
         if(search_txt is not None):
-            SearchGamesForSystemMenu(game_system, search_txt.upper()).run_rom_selection()
+            return SearchGamesForSystemMenu(game_system, search_txt.upper()).run_rom_selection()
 
     def toggle_view(self):
         if(ViewType.TEXT_AND_IMAGE == Theme.get_game_selection_view_type()):

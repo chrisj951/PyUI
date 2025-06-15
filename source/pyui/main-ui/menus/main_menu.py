@@ -1,5 +1,6 @@
 
 from controller.controller_inputs import ControllerInput
+from display.display import Display
 from menus.app.app_menu import AppMenu
 from menus.games.favorites_menu import FavoritesMenu
 from menus.games.game_system_select_menu import GameSystemSelectMenu
@@ -107,7 +108,28 @@ class MainMenu:
     def run_main_menu_selection(self):
         
         if(Theme.skip_main_menu()):
-            self.system_select_menu.run_system_selection()
+            selection = "Games"
+            while(True):
+                Display.set_selected_tab(selection)
+                if("Games" == selection):
+                    controller_input = self.system_select_menu.run_system_selection()
+                    if(ControllerInput.L1 == controller_input):
+                        selection = "Settings"
+                    elif(ControllerInput.R1 == controller_input):
+                        selection = "Apps"
+                elif("Apps" == selection):
+                    controller_input = self.app_menu.run_app_selection()
+                    if(ControllerInput.L1 == controller_input):
+                        selection = "Games"
+                    elif(ControllerInput.R1 == controller_input):
+                        selection = "Settings"
+                elif("Settings" == selection):
+                    controller_input = self.settings_menu.show_menu()
+                    if(ControllerInput.L1 == controller_input):
+                        selection = "Apps"
+                    elif(ControllerInput.R1 == controller_input):
+                        selection = "Games"
+
         else:
             selected = Selection(None,None,0)
 

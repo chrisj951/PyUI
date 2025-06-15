@@ -30,4 +30,4 @@ class RecentsMenu(RomsMenuCommon):
         return rom_list
 
     def run_rom_selection(self) :
-        self._run_rom_selection("Recents")
+        return self._run_rom_selection("Recents")

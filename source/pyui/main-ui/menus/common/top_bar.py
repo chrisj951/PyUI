@@ -14,8 +14,58 @@ class TopBar:
         self.title = ""
         self.volume_changed_time = time.time()
         self.volume = 0
-
+        self.selected_tab = "Games"
+        
     def render_top_bar(self, title, hide_top_bar_icons = False) :
+        if(Theme.skip_main_menu()):
+            self.render_top_bar_menu_skipped(title, hide_top_bar_icons)
+        else:
+            self.render_top_bar_menu_not_skipped(title, hide_top_bar_icons)
+
+    def render_top_bar_menu_skipped(self, title, hide_top_bar_icons = False) :
+        from display.display import Display
+        top_bar_bg = Theme.get_title_bar_bg()
+        self.top_bar_w, self.top_bar_h = Display.render_image(top_bar_bg,0,0)
+        center_of_bar = self.top_bar_h //2
+
+        x_offset = Theme.get_top_bar_initial_x_offset()
+
+        games_color = Theme.text_color_selected(FontPurpose.GRID_ONE_ROW) if "Games" == self.selected_tab else Theme.text_color(FontPurpose.GRID_ONE_ROW)
+        apps_color = Theme.text_color_selected(FontPurpose.GRID_ONE_ROW) if "Apps" == self.selected_tab else Theme.text_color(FontPurpose.GRID_ONE_ROW)
+        settings_color = Theme.text_color_selected(FontPurpose.GRID_ONE_ROW) if "Settings" == self.selected_tab else Theme.text_color(FontPurpose.GRID_ONE_ROW)
+        
+        text_padding = 20
+        w, h = Display.render_text("Games",x_offset, center_of_bar,  games_color, FontPurpose.GRID_ONE_ROW, RenderMode.MIDDLE_LEFT_ALIGNED)
+        x_offset += w +text_padding
+        w, h = Display.render_text("Apps",x_offset, center_of_bar,  apps_color, FontPurpose.GRID_ONE_ROW, RenderMode.MIDDLE_LEFT_ALIGNED)
+        x_offset += w +text_padding
+        w, h = Display.render_text("Settings",x_offset, center_of_bar,  settings_color, FontPurpose.GRID_ONE_ROW, RenderMode.MIDDLE_LEFT_ALIGNED)
+        x_offset += w +text_padding
+
+        battery_percent = Device.get_battery_percent()
+        charging = Device.get_charge_status()
+        wifi_status = Device.get_wifi_status()
+        battery_icon = Theme.get_battery_icon(charging,battery_percent)
+        wifi_icon = Theme.get_wifi_icon(wifi_status)
+
+        img_padding = 10
+
+        #Battery Text
+        x_offset = Device.screen_width() - img_padding
+        w, h = Display.render_text(str(battery_percent)+"%",x_offset, center_of_bar,  Theme.text_color(FontPurpose.BATTERY_PERCENT), FontPurpose.BATTERY_PERCENT, RenderMode.MIDDLE_RIGHT_ALIGNED)
+        x_offset = x_offset - w - img_padding
+        #Battery Icon
+        w, h = Display.render_image(
+            battery_icon ,x_offset,center_of_bar,RenderMode.MIDDLE_RIGHT_ALIGNED)
+        x_offset = x_offset - w - img_padding
+        #Wifi
+        w, h = Display.render_image(wifi_icon,x_offset,center_of_bar, RenderMode.MIDDLE_RIGHT_ALIGNED)
+        x_offset = x_offset - w - img_padding
+        #Volume
+        if(time.time() - self.volume_changed_time < 3):
+            Display.render_image(Theme.get_volume_indicator(self.volume),x_offset,center_of_bar, RenderMode.MIDDLE_RIGHT_ALIGNED)
+
+    def render_top_bar_menu_not_skipped(self, title, hide_top_bar_icons = False) :
         from display.display import Display
         self.title = title
         top_bar_bg = Theme.get_title_bar_bg()
@@ -91,3 +141,6 @@ class TopBar:
         #volume icon is for every 5 volume
         self.volume = volume // 5
         self.volume_changed_time = time.time()
+
+    def set_selected_tab(self, tab):
+        self.selected_tab = tab
