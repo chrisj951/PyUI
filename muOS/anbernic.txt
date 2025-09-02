@@ -1,0 +1,28 @@
+
+1) Install pip
+	curl -sS https://bootstrap.pypa.io/get-pip.py | python3
+
+2) Install psutil
+	pip install psutil
+
+3) Install pyserial
+	pip3 install pyserial
+
+4) Install PIL
+	pip3 install pillow
+
+5) Install PySDL2
+	pip3 install pysdl2
+
+mkdir /mnt/sdcard/pyui/logs
+mkdir /mnt/sdcard/Saves
+lm -s sdcard SDCARD
+adb push .\STOCK\ /mnt/sdcard/Themes
+
+
+
+
+Notes:
+
+GET_VAR "device" "cpu/governor" ==> /opt/muos/device/config/cpu/governor
+
